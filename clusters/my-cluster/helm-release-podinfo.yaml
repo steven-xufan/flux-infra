@@ -16,3 +16,5 @@ spec:
       interval: 1m
   values:
     replicaCount: 1
+    ui:
+      color: "#800000"
