@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo-remote
+  namespace: default
+spec:
+  interval: 10s
+  kubeConfig:
+    secretRef:
+      name: test-gke-2-flux-service-account
+  serviceAccountName: flux-service-account
+  chart:
+    spec:
+      chart: podinfo
+      version: '6.1.x'
+      sourceRef:
+        kind: HelmRepository
+        name: podinfo
+        namespace: flux-system
+      interval: 1m
+  install:
+    remediation:
+      retries: -1
+  values:
+    replicaCount: 1
+    ui:
+      color: "#800000"
