@@ -24,4 +24,4 @@ spec:
   values:
     replicaCount: 1
     ui:
-      color: "#800000"
+      color: "#800033"
